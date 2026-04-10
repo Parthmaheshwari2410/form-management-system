@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const db = require('./db');
 
 async function initDB() {
-    const dbName = process.env.DB_NAME || 'role_management';
+    const dbName = process.env.DB_NAME || 'form_management';
 
     await db.execute(`CREATE DATABASE IF NOT EXISTS \`${dbName}\``);
 
@@ -83,7 +83,7 @@ async function initDB() {
     );
 
     if (!existing) {
-        const hash = await bcrypt.hash('admin123', 10);
+        const hash = await bcrypt.hash('password', 10);
         await db.execute(
             'INSERT INTO users (name, email, phone, password, role) VALUES (?,?,?,?,?)',
             ['Super Admin', adminEmail, null, hash, 'admin']

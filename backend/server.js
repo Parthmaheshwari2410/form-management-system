@@ -17,4 +17,5 @@ const initDB = require('./config/initDB');
 
 initDB();
 const PORT = process.env.PORT || 5000;
+console.log("DB_URL:", process.env.DB_URL);
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
